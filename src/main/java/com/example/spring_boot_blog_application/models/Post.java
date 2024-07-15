@@ -7,6 +7,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Entity
@@ -23,27 +26,9 @@ public class Post {
 	private String body;
 
 	private LocalDateTime createdAt;
-}
 
-//import jakarta.persistence.PrePersist;
-//
-//@Entity
-//@Data
-//public class Post {
-//
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Long id;
-//
-//    private String title;
-//
-//    @Column(columnDefinition = "TEXT")
-//    private String body;
-//
-//    private LocalDateTime createdAt;
-//
-//    @PrePersist
-//    protected void onCreate() {
-//        createdAt = LocalDateTime.now();
-//    }
-//}
+	@NotNull
+	@ManyToOne
+	@JoinColumn(name = "account_id", referencedColumnName = "id", nullable = false)
+	private Account account;
+}

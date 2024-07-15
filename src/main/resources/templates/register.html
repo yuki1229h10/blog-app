@@ -8,14 +8,18 @@
 <meta
 	name="viewport"
 	content="width=device-width, initial-scale=1">
-<title>Blog::404</title>
+<title>Blog::Register</title>
 </head>
 <body>
 	<div class="container">
-		<h1>404</h1>
+		<h1>Spring Boot Blog Application</h1>
 		<hr />
-		<p>Sorry, Post not Found</p>
-		<a th:href="@{/}">Home</a>
+		<form
+			action="#"
+			th:action="@{/register}" th:object="${account}"
+			method="POST">
+	
+		</form>
 	</div>
 </body>
 </html>
